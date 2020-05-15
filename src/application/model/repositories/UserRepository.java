@@ -28,7 +28,7 @@ public class UserRepository {
 			System.out.println(e.getMessage());
 		}
 	}
-	
+
 	public static List<User> getAll() {
 		List<User> users = new ArrayList<>();
 		

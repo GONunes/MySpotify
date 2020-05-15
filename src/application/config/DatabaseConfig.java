@@ -7,14 +7,14 @@ public class DatabaseConfig {
 	private static Connection conn = null;
 	
 	private static String DRIVER = "jdbc:sqlite";
-	private static String NAME = "test";
+	private static String NAME = "objects";
 	
 	public static void connect() {
 		try {
 			conn = DriverManager
 					.getConnection(DRIVER + ":" + NAME + ".db");			
 		} catch (Exception e) {
-			System.out.println("ERRO NA CONEX√O COM O BANCO:");
+			System.out.println("ERRO NA CONEX√ÉO COM O BANCO:");
 			System.out.println(e.getMessage());
 			System.exit(1);
 		}
