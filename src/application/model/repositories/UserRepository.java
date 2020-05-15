@@ -31,6 +31,7 @@ public class UserRepository {
 
 	public static User getUserByUsername(String username, int limit) {
 		String sql = "SELECT * FROM users WHERE name = ? LIMIT 1";
+		User user = null;
 		
 		try {
 			PreparedStatement pst = DatabaseConfig
@@ -42,9 +43,14 @@ public class UserRepository {
 			ResultSet rs = pst.getResultSet();
 			
 			rs.next();
-			return new User(rs.getString("name"),
-							rs.getDate("date"),
-							null);
+			if(rs != null) {
+				user = new User(
+							rs.getString("name"),
+							rs.getDate("created"),
+							null
+						);
+			}
+			return user;
 			
 		} catch (Exception e) {
 			System.out.println(e.getMessage());
