@@ -29,6 +29,29 @@ public class UserRepository {
 		}
 	}
 
+	public static User getUserByUsername(String username, int limit) {
+		String sql = "SELECT * FROM users WHERE name = ? LIMIT 1";
+		
+		try {
+			PreparedStatement pst = DatabaseConfig
+										.getConnect()
+										.prepareStatement(sql);
+			pst.setString(1, username);
+			
+			pst.executeUpdate();
+			ResultSet rs = pst.getResultSet();
+			
+			rs.next();
+			return new User(rs.getString("name"),
+							rs.getDate("date"),
+							null);
+			
+		} catch (Exception e) {
+			System.out.println(e.getMessage());
+		}
+		return null;
+	}
+	
 	public static List<User> getAll() {
 		List<User> users = new ArrayList<>();
 		
