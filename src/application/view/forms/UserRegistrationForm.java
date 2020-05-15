@@ -7,16 +7,20 @@ import java.util.Date;
 
 public class UserRegistrationForm {
 	public static void view() {
-		User usuario = new User();
-		Date data = new Date();
+		User user = new User();
+		Date date = new Date();
 		Scanner sc = new Scanner(System.in);
 		
-		if(null == null) {
-		System.out.println(" Digite o nome de usuário que deseja utilizar:\n");
-		System.out.println(" > ");
-		String nome = sc.next();
-		usuario.setName(nome);
-		usuario.setCreated(data);
+		
+		System.out.println(" Digite o nome de usuário que deseja utilizar:");
+		System.out.print(" > ");
+		String name = sc.next();
+		if(UserRepository.getUserByUsername(name) == null) {
+		user.setName(name);
+		user.setCreated(date);
+		UserRepository.add(user);
+		System.out.println("Usuário Cadastrado com Sucesso!");
 		}
+		else System.out.println("Esse usuário já está cadastrado! Escolha outro\n");
 	}
 }
