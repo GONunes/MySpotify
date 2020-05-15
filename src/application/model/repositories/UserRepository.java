@@ -29,7 +29,7 @@ public class UserRepository {
 		}
 	}
 
-	public static User getUserByUsername(String username, int limit) {
+	public static User getUserByUsername(String username) {
 		String sql = "SELECT * FROM users WHERE name = ? LIMIT 1";
 		User user = null;
 		
