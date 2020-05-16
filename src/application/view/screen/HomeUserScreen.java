@@ -27,8 +27,9 @@ public class HomeUserScreen {
 			System.out.println("Digite 6 para listar playlist");
 			System.out.println("Digite 7 para sair");
 			
-			System.out.println("> ");
+			System.out.print("> ");
 			escolha = sc.nextInt();
+			
 			switch (escolha) {
 			case 1:
 				SongRegistrationForm.view();
