@@ -83,4 +83,25 @@ public class SongRepository {
 			return null;
 	}
 	
+	public static void removeById(int id) {
+		String sqlPlaylist = "DELETE FROM playlists_songs WHERE song_id = ?;";
+		String sqlSong = "DELETE FROM songs WHERE id = ?;";
+		
+		try {
+			PreparedStatement psP = DatabaseConfig.getConnect()
+												.prepareStatement(sqlPlaylist);
+			psP.setInt(1, id);
+			psP.executeUpdate();
+			
+			PreparedStatement psS = DatabaseConfig.getConnect()
+												.prepareStatement(sqlSong);
+			psS.setInt(1, id);
+			psS.executeUpdate();
+			
+		} catch (Exception e) {
+			System.out.println(e.getMessage());
+		}
+		
+		
+	}
 }
