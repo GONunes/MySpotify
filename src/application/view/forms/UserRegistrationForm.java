@@ -15,11 +15,12 @@ public class UserRegistrationForm {
 		System.out.println(" Digite o nome de usuário que deseja utilizar:");
 		System.out.print(" > ");
 		String name = sc.next();
+		
 		if(UserRepository.getUserByUsername(name) == null) {
-		user.setName(name);
-		user.setCreated(date);
-		UserRepository.add(user);
-		System.out.println("Usuário Cadastrado com Sucesso!");
+			user.setName(name);
+			user.setCreated(date);
+			UserRepository.add(user);
+			System.out.println("Usuário Cadastrado com Sucesso!");
 		}
 		else System.out.println("Esse usuário já está cadastrado! Escolha outro\n");
 	}

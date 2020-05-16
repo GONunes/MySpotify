@@ -13,9 +13,9 @@ public class LoginScreen {
 		Scanner sc = new Scanner(System.in);
 		
 		while(true) {
-			System.out.println("Informe seu usu√°rio:");
-			System.out.println("Caso n√£o tenha um usu√°rio, digite 0 para se cadastrar!");
-			System.out.print(">");
+			System.out.println("Informe seu usu·rio:");
+			System.out.println("Caso n„o tenha um usu·rio, digite 0 para se cadastrar!");
+			System.out.print(" > ");
 			username = sc.nextLine();
 			
 			if(username.equals("0"))
@@ -26,11 +26,13 @@ public class LoginScreen {
 				if (u != null) {
 					UserConfig.setUser(u);
 				} else {
-					System.out.println("Infelizmente o usu√°rio informado est√° incorreto");
+					System.out.println("Infelizmente o usu·rio informado est· incorreto");
 					System.out.println("Precione qualquer tecla para continuar...");
 					sc.nextLine();
 				}
+				
 			}
+			
 		}
 	}
 }

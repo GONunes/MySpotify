@@ -40,13 +40,14 @@ public class UserRepository {
 			
 			ResultSet rs = pst.executeQuery();
 			
-			if(!rs.next()) {
+			if(rs.next()) {
 				return new User(
 							rs.getString("name"),
 							rs.getDate("created"),
 							null
 						);
 			}
+
 			return null;
 			
 		} catch (Exception e) {
