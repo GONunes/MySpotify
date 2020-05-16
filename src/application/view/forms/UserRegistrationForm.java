@@ -22,6 +22,7 @@ public class UserRegistrationForm {
 		System.out.print("> ");
 		String name = sc.next();
 		
+		
 		if(UserRepository.getUserByUsername(name) == null) {
 			user.setName(name);
 			
