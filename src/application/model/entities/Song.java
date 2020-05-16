@@ -21,7 +21,7 @@ public class Song {
 	}
 	
 	public Song(int id, String titulo, int ano, String genero, double duracao, Composer compositor) {
-		this();
+		this(titulo, ano, genero, duracao, compositor);
 		this.id = id;
 	}
 
