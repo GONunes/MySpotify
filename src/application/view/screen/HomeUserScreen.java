@@ -45,7 +45,7 @@ public class HomeUserScreen {
 				//Apagar playlist
 				break;
 			case 5:
-				//Listar musica
+				SongsScreen.view();
 				break;
 			case 6:
 				//Listar Playlist
