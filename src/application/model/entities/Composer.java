@@ -7,6 +7,8 @@ public class Composer extends User{
 	ArrayList<Album> albuns = new ArrayList<Album>();
 	ArrayList<Song> musicas = new ArrayList<Song>();
 	
+	public Composer() {}
+	
 	public Composer(ArrayList<Album> albuns, ArrayList<Song> musicas) {
 		this.albuns = albuns;
 		this.musicas = musicas;
