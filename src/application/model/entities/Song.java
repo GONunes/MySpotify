@@ -65,6 +65,13 @@ public class Song {
 		this.compositor = compositor;
 	}
 
+	public Song(String titulo, int ano, String genero, double duracao, Composer compositor) {
+		this.titulo = titulo;
+		this.ano = ano;
+		this.genero = genero;
+		this.duracao = duracao;
+		this.compositor = compositor;
+	}
 
 	public String toString() {
 		return "Título da Música: " + titulo + "\n" +
@@ -73,5 +80,5 @@ public class Song {
 							"Duração: " + duracao + "\n" +
 							"Compositor: " + compositor;
 	}
-
+	
 }
