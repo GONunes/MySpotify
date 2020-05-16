@@ -8,6 +8,5 @@ public class App {
 	public static void main(String[] args) {
 		DatabaseConfig.started();
 		Console.start();
-		HomeUserScreen.view();
 	}
 }
