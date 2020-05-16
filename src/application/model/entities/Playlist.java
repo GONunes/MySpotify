@@ -5,6 +5,7 @@ import java.util.List;
 
 public class Playlist {
 	
+	private int id;
 	private String nome;
 	private List<Song> songs = new ArrayList<>();
 	
@@ -15,6 +16,9 @@ public class Playlist {
 		this.songs = songs;
 	}
 
+	public int getId() {
+		return id;
+	}
 	public String getNome() {
 		return nome;
 	}
