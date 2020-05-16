@@ -36,7 +36,7 @@ public class SongRegistrationForm {
 		
 		System.out.println(" Digite a duração da musica: ");
 		System.out.print(" > ");
-		double duration = sc.nextDouble();
+		double duration = Double.parseDouble(sc.next().replace(":", "."));
 		System.out.print("\n");
 		song.setDuracao(duration);
 		
