@@ -25,7 +25,7 @@ public class DatabaseConfig {
 		connect();
 		
 		String[] initialSqls = new String[1];
-		initialSqls[0] = "CREATE IF NOT EXISTS TABLE users (id INTEGER PRIMARY KEY AUTOINCREMENT, name VARCHAR(50), created DATETIME); ";
+		initialSqls[0] = "CREATE TABLE IF NOT EXISTS users (id INTEGER PRIMARY KEY AUTOINCREMENT, name VARCHAR(50), created DATETIME); ";
 		
 		try {
 			for(String sql : initialSqls) {
