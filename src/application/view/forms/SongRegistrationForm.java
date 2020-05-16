@@ -42,9 +42,9 @@ public class SongRegistrationForm {
 		System.out.println(" Digite o nome do compositor: ");
 		System.out.print(" > ");
 		String songwriter = sc.next();
-		Composer composer = new Composer();
+		song.setCompositor(new Composer());
 		System.out.print("\n");
-		composer.setName(songwriter);
+		song.getCompositor().setName(songwriter);
 		
 		SongRepository.add(song);
 		System.out.print("Música cadastrada com sucesso!");
