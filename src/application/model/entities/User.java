@@ -4,6 +4,7 @@ import java.util.Date;
 import java.util.List;
 
 public class User {
+	private int id;
 	private String name;
 	private Date created;
 	private List<Playlist> playlists;
@@ -17,6 +18,14 @@ public class User {
 		this.playlists = playlists;
 	}
 	
+	public User (int id, String name, Date created, List<Playlist> playlists) {
+		this(name, created, playlists);
+		this.id = id;
+	}
+	
+	public int getId() {
+		return id;
+	}
 	public String getName() {
 		return name;
 	}
