@@ -4,6 +4,7 @@ import application.model.entities.Song;
 import application.model.entities.Composer;
 import application.model.repositories.SongRepository;
 import application.util.Screen;
+import application.view.screen.HomeUserScreen;
 
 import java.util.Scanner;
 
@@ -45,9 +46,17 @@ public class SongRegistrationForm {
 		Composer composer = new Composer();
 		System.out.print("\n");
 		composer.setName(songwriter);
+		song.setCompositor(composer);
 		
 		SongRepository.add(song);
-		System.out.print("Música cadastrada com sucesso!");
+		
+		System.out.println("Música cadastrada com sucesso!");
+		System.out.println("Pressione enter para continuar");
+		
+		sc.nextLine();
+		sc.nextLine();
+		
+		HomeUserScreen.view();
 		
 	}
 
