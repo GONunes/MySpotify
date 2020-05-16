@@ -14,20 +14,31 @@ public class SongRepository {
 	public static void add(Song song) {
 		String sqlSong = "INSERT INTO songs (titulo, ano, genero, duracao, compositor) VALUES (?,?,?,?,?)";
 		String sqlComposer = "INSERT INTO composers (nome) VALUES (?)";
+		String sqlComposerSeach = "SELECT * FROM composers WHERE nome = ?";
+		
 		int idComposer = 0;
 		
 		try {
-			PreparedStatement pst = DatabaseConfig.getConnect()
-												.prepareStatement(sqlComposer);
+			PreparedStatement pscS = DatabaseConfig.getConnect()
+												.prepareStatement(sqlComposerSeach);
+			pscS.setString(1, song.getCompositor().getName());
 			
-			pst.setString(1, song.getCompositor().getName());
-			
-			pst.executeUpdate();
-			idComposer = DatabaseConfig.getConnect()
-							.createStatement()
-							.getGeneratedKeys()
-							.getInt("last_insert_rowid()");
-			
+			ResultSet rscs = pscS.executeQuery();
+			if(!rscs.next()) {	
+				PreparedStatement pst = DatabaseConfig.getConnect()
+													.prepareStatement(sqlComposer);
+				
+				pst.setString(1, song.getCompositor().getName());
+				
+				pst.executeUpdate();
+				idComposer = DatabaseConfig.getConnect()
+								.createStatement()
+								.getGeneratedKeys()
+								.getInt("last_insert_rowid()");
+			} else {
+				idComposer = rscs.getInt("id");
+			}
+				
 			PreparedStatement pstS = DatabaseConfig.getConnect()
 												.prepareStatement(sqlSong);
 			pstS.setString(1, song.getTitulo());
