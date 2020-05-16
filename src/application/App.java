@@ -6,7 +6,7 @@ import application.view.forms.UserRegistrationForm;
 
 public class App {
 	public static void main(String[] args) {
-		DatabaseConfig.connect();
+		DatabaseConfig.started();
 		//Console.start();
 		UserRegistrationForm.view();
 	}
