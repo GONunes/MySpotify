@@ -12,22 +12,28 @@ public class LoginScreen {
 	public static void view() {
 		String username = "";
 		Scanner sc = new Scanner(System.in);
-		boolean err = false;
 		
-		while(true) {
+		boolean err = false;
+		boolean open = true;
+		
+		while(open) {
 			Screen.clear();
 			
-			if(err)
-				System.out.println("Usuário informado está incorreto!");
+			System.out.println("Caso queira se cadastrar, digite 0.");
+			System.out.println("Caso queira sair, digite 1.");
 			
+			if(err) 
+				System.out.println("Usuário informado está incorreto!");
 			System.out.println("Informe seu usuário" + (err ? " correto:" : ":") );
-			System.out.println("Caso não tenha um usuário, digite 0 para se cadastrar!");
+			
 			System.out.print("> ");
 			username = sc.nextLine();
 			
 			if(username.equals("0"))
 				UserRegistrationForm.view();
-			else {
+			else if(username.equals("1")) {
+				open = false;
+			} else {
 				User u = UserAuth.auth(username);
 				
 				if (u != null) {
@@ -35,9 +41,8 @@ public class LoginScreen {
 					HomeUserScreen.view();
 				} else
 					err = true;
-				
 			}
-			
+
 		}
 	}
 }

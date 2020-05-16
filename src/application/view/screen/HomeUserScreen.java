@@ -3,16 +3,20 @@ package application.view.screen;
 import java.util.Scanner;
 
 import application.config.UserConfig;
+import application.util.Screen;
 
 public class HomeUserScreen {
 	
 	public static void view(){ 
-		int exit= 0;
-		int escolha=0;
 		Scanner sc = new Scanner(System.in);
+
+		boolean open = true;
+		int escolha = 0;
 		
-	  while (exit==0) {
-			System.out.println("bem vindo" + UserConfig.getUser());
+	  while (open) {
+		  Screen.clear();
+		  
+			System.out.println("bem vindo " + UserConfig.getUser().getName());
 			System.out.println("Digite 1 para cadastrar uma musica" + "\n" + "Digite 2 para cadastrar uma playlist" + "\n" + 
 			"Digite 3 para apagar uma musica" +"\n" + "Digite 4 para apagar uma playlist" + "n" + "Digite 5 para listar musicas"
 					+ "n" + "Digite 6 para listar playlist"+ "n" + "Digite 7 para sair");
@@ -38,7 +42,7 @@ public class HomeUserScreen {
 				break;
 			case 7:
 				System.out.println("Saindo");
-				exit = 1;
+				open = false;
 		}}
 }
 }
