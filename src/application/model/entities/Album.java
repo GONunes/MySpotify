@@ -4,6 +4,8 @@ public class Album {
 	
 	Composer compositor;
 	
+	public Album() {}
+	
 	public Album(Composer compositor) {
 		this.compositor = compositor;
 	}

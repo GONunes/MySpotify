@@ -1,5 +1,7 @@
 package application.model.entities;
 
+import application.model.entities.Composer;
+
 public class Song {
 	String titulo;
 	int ano;
@@ -7,6 +9,19 @@ public class Song {
 	double duracao;
 	Composer compositor;
 	
+	
+	public Song() {}
+
+	public void Song(String titulo, int ano, String genero, double duracao, Composer compositor) {
+		this.titulo = titulo;
+		this.ano = ano;
+		this.genero = genero;
+		this.duracao = duracao;
+		this.compositor = compositor;
+	}
+
+
+
 	public String getTitulo() {
 		return titulo;
 	}

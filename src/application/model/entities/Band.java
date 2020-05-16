@@ -6,6 +6,8 @@ public class Band {
 	
 	ArrayList <Composer> artistas = new ArrayList<Composer>();
 	
+	public Band() {}
+	
 	public Band(ArrayList<Composer> artistas) {
 		this.artistas = artistas;
 	}
