@@ -11,13 +11,18 @@ public class Song {
 	private Composer compositor;
 	
 	public Song() {}
-
-	public void Song(String titulo, int ano, String genero, double duracao, Composer compositor) {
+	
+	public Song(String titulo, int ano, String genero, double duracao, Composer compositor) {
 		this.titulo = titulo;
 		this.ano = ano;
 		this.genero = genero;
 		this.duracao = duracao;
 		this.compositor = compositor;
+	}
+	
+	public Song(int id, String titulo, int ano, String genero, double duracao, Composer compositor) {
+		this();
+		this.id = id;
 	}
 
 	public int getId() {
@@ -61,14 +66,6 @@ public class Song {
 	}
 
 	public void setCompositor(Composer compositor) {
-		this.compositor = compositor;
-	}
-
-	public Song(String titulo, int ano, String genero, double duracao, Composer compositor) {
-		this.titulo = titulo;
-		this.ano = ano;
-		this.genero = genero;
-		this.duracao = duracao;
 		this.compositor = compositor;
 	}
 

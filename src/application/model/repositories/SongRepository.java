@@ -6,13 +6,14 @@ import java.util.ArrayList;
 import java.util.List;
 
 import application.config.DatabaseConfig;
+import application.config.UserConfig;
 import application.model.entities.Composer;
 import application.model.entities.Song;
 
 public class SongRepository {
 	
 	public static void add(Song song) {
-		String sqlSong = "INSERT INTO songs (titulo, ano, genero, duracao, compositor) VALUES (?,?,?,?,?)";
+		String sqlSong = "INSERT INTO songs (createdBy, titulo, ano, genero, duracao, compositor) VALUES (?,?,?,?,?,?)";
 		String sqlComposer = "INSERT INTO composers (nome) VALUES (?)";
 		String sqlComposerSeach = "SELECT * FROM composers WHERE nome = ?";
 		
@@ -41,11 +42,12 @@ public class SongRepository {
 				
 			PreparedStatement pstS = DatabaseConfig.getConnect()
 												.prepareStatement(sqlSong);
-			pstS.setString(1, song.getTitulo());
-			pstS.setInt(2, song.getAno());
-			pstS.setString(3, song.getGenero());
-			pstS.setDouble(4, song.getDuracao());
-			pstS.setInt(5, idComposer);
+			pstS.setInt(1, UserConfig.getUser().getId());
+			pstS.setString(2, song.getTitulo());
+			pstS.setInt(3, song.getAno());
+			pstS.setString(4, song.getGenero());
+			pstS.setDouble(5, song.getDuracao());
+			pstS.setInt(6, idComposer);
 			
 			pstS.executeUpdate();
 			
@@ -55,16 +57,18 @@ public class SongRepository {
 	}
 	
 	public static List<Song> getAllSongs() {
-		String sql = "SELECT t1.*, t2.nome FROM songs AS t1 JOIN composers AS t2 ON t1.compositor = t2.id";
+		String sql = "SELECT t1.*, t2.nome FROM songs AS t1 JOIN composers AS t2 ON t1.compositor = t2.id WHERE createdBy = ?";
 		List<Song> songs = new ArrayList<>();
 		
 		try {
-			ResultSet rs = DatabaseConfig.getConnect()
-									.createStatement()
-									.executeQuery(sql);
+			PreparedStatement st = DatabaseConfig.getConnect()
+									.prepareStatement(sql);
+			st.setInt(1, UserConfig.getUser().getId());
+			ResultSet rs = st.executeQuery();
 			
 			while(rs.next()) {
 				songs.add(new Song(
+							rs.getInt("id"),
 							rs.getString("titulo"),
 							rs.getInt("ano"),
 							rs.getString("genero"),
