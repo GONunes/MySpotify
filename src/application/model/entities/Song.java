@@ -70,11 +70,12 @@ public class Song {
 	}
 
 	public String toString() {
-		return "Título da Música: " + titulo + "\n" +
+		return "Código da Música: " + id + "\n" +
+				"Título da Música: " + titulo + "\n" +
 							"Ano: " + ano + "\n" +
 							"Gênero: " + genero + "\n" +
 							"Duração: " + duracao + "\n" +
-							"Compositor: " + compositor;
+							"Compositor: " + compositor.getName();
 	}
 	
 }

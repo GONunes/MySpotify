@@ -1,11 +1,12 @@
 package application.view.forms;
 
+import java.util.List;
+import java.util.Scanner;
+
 import application.model.entities.Playlist;
 import application.model.entities.Song;
 import application.model.repositories.PlaylistRepository;
 import application.model.repositories.SongRepository;
-import java.util.List;
-import java.util.Scanner;
 import application.util.Screen;
 import application.view.screen.HomeUserScreen;
 
@@ -16,21 +17,21 @@ public class PlaylistRegistrationForm {
 		Playlist playlist = new Playlist();
 		List<Song> songs = SongRepository.getAllSongs();		
 		String ids = "";
-		Scanner sc = new Scanner(System.in);
 		
+		Scanner sc = new Scanner(System.in);
 		Screen.clear();
 		
 		if(songs == null) {
-			System.out.println("Desculpe, mas você ainda não cadastrou nenhum música");
+			System.out.println("Desculpe, mas você ainda não cadastrou nenhuma música");
 			System.out.println("É necessário pelo menos uma para criar uma nova playlist");
 		} else {
 			
 			System.out.println("Digite o nome da playlist: ");
 			System.out.print("> ");
 			String name = sc.nextLine();
-			System.out.print("\n");
 			playlist.setNome(name);
 			
+			System.out.println();
 			System.out.println("Lista de Músicas: ");
 			
 			for(Song song : songs) {
@@ -42,7 +43,7 @@ public class PlaylistRegistrationForm {
 			System.out.println("Atenção: Informe os números de todas as músicas, separadas por vírgula");
 			System.out.println("Exemplo: 1,2,3,4,5");
 			
-			System.out.print(">");
+			System.out.print("> ");
 			ids = sc.nextLine();
 			
 			String[] idsArray = ids.split(",");
@@ -53,20 +54,21 @@ public class PlaylistRegistrationForm {
 										.findFirst()
 										.get();
 				
-				if(songSelected != null) {
+				if(songSelected != null)
 					playlist.getSongs().add(songSelected);
-					System.out.println("Música adicionada com sucesso!");
-					
-				} else 
-					System.out.println("O id informado não confere com as músicas disponíveis em sua lista");
+				else 
+					System.out.println("O ID '"
+									+ idInt 
+									+ "' informado não é uma música válida");
 				
 			}
 			
 			PlaylistRepository.add(playlist);
+			
+			System.out.println();
 			System.out.println("Playlist cadastrada com sucesso!");
 			System.out.println("Pressione enter para continuar");
 			
-			sc.nextLine();
 			sc.nextLine();
 			
 			HomeUserScreen.view();
