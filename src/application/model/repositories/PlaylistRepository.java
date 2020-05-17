@@ -32,6 +32,7 @@ public class PlaylistRepository {
 			for (Song song : playlist.getSongs()) {
 				PreparedStatement pss = DatabaseConfig.getConnect()
 												.prepareStatement(sqlPlaylistSong);
+
 				pss.setInt(1, idPlaylist);
 				pss.setInt(2, song.getId());
 				
