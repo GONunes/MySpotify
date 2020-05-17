@@ -15,6 +15,11 @@ public class Playlist {
 		this.nome = nome;
 		this.songs = songs;
 	}
+	
+	public Playlist(int id, String nome, List<Song> songs) {
+		this(nome, songs);
+		this.id = id;
+	}
 
 	public int getId() {
 		return id;
