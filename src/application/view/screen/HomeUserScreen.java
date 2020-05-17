@@ -5,7 +5,9 @@ import java.util.Scanner;
 import application.config.UserConfig;
 import application.util.Screen;
 import application.view.forms.PlaylistRegistrationForm;
+import application.view.forms.PlaylistRemoveForm;
 import application.view.forms.SongRegistrationForm;
+import application.view.forms.SongRemoveForm;
 
 public class HomeUserScreen {
 	
@@ -38,10 +40,10 @@ public class HomeUserScreen {
 				PlaylistRegistrationForm.view();
 				break;
 			case 3:
-				//Apagar musica
+				SongRemoveForm.view();
 				break;
 			case 4:
-				//Apagar playlist
+				PlaylistRemoveForm.view();
 				break;
 			case 5:
 				SongsScreen.view();
