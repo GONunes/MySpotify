@@ -4,8 +4,6 @@ import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
 
-import Questao_12.Veiculo;
-
 public class Playlist {
 	
 	private int id;

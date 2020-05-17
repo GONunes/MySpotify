@@ -2,6 +2,7 @@ package application.view.forms;
 
 import application.model.entities.Playlist;
 import application.model.entities.Song;
+import application.model.repositories.PlaylistRepository;
 import application.model.repositories.SongRepository;
 import java.util.List;
 import java.util.Scanner;
@@ -61,6 +62,7 @@ public class PlaylistRegistrationForm {
 				
 			}
 			
+			PlaylistRepository.add(playlist);
 			System.out.println("Playlist cadastrada com sucesso!");
 			System.out.println("Pressione enter para continuar");
 			
