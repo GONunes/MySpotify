@@ -18,10 +18,11 @@ public class PlaylistScreen {
 			sc.nextLine();
 			sc.nextLine();
 	 } else {
+
 		 ListIterator<Playlist> it = playlists.listIterator();
 		 	while(it.hasNext()) {
 		 		System.out.println("Playlists Disponíveis: " + it.next().toString());	 
-		 	}
-	 	}
-	}
-}
+		 			}
+	 			}
+		 	}	
+		}	
