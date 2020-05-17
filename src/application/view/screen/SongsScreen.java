@@ -21,18 +21,20 @@ public class SongsScreen {
 			System.out.println("Pressione Enter para retornar ao menu principal.");
 			
 			sc.nextLine();			
-		}
+		}else {
 		
 		ListIterator<Song> it = songs.listIterator();
 		System.out.println("Músicas Cadastradas: ");
 		
 		while(it.hasNext()) {
-			System.out.println(it.next());
+			for(int i  = 0; i < songs.size(); i++) {
+			System.out.println(it.next().toString());
 			System.out.println();
+			}
 		}
 		
 		System.out.println("Pressione Enter para Continuar.");
-		sc.nextLine();
-		
+		sc.nextLine();		
+		}
 	}
 }
