@@ -11,7 +11,7 @@ public class PlaylistScreen {
 	
 	 List<Playlist> playlists = PlaylistRepository.getAllPlaylists();
 	 
-	 if(PlaylistRepository.getAllPlaylists() == null) {
+	 if(playlists == null) {
 			System.out.println("A playlist está vazia!");	
 			System.out.println("Volte à tela principal para montar a sua playlist.");
 			System.out.println("Pressione Enter para retornar ao menu principal.");
@@ -21,9 +21,8 @@ public class PlaylistScreen {
 	 
 	 ListIterator it = playlists.listIterator();
 	 while(it.hasNext()) {
-		 System.out.println("Playlists Disponíveis: " + it.next());
-		 System.out.println(playlists.toString());
-		 //como chamar o toString dentro de screen?
+		 System.out.println("Playlists Disponíveis: " + it.next().toString());
+
 		 
 	 }
 	 
