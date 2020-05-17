@@ -24,13 +24,7 @@ public class PlaylistScreen {
 		 for(int i=0; i<playlists.size(); i++) {
 			 System.out.println("Playlists Disponíveis: " + it.next().toString());
 		 }
-		 }
-		 
+		 } 
 	 }
-	 
-	 
-	 
-	
-
 	}
 }
