@@ -17,18 +17,11 @@ public class PlaylistScreen {
 			System.out.println("Pressione Enter para retornar ao menu principal.");
 			sc.nextLine();
 			sc.nextLine();
-	 }
-	 
-	 ListIterator it = playlists.listIterator();
-	 while(it.hasNext()) {
-		 System.out.println("Playlists Disponíveis: " + it.next().toString());
-
-		 
-	 }
-	 
-	 
-	 
-	
-
+	 } else {
+		 ListIterator<Playlist> it = playlists.listIterator();
+		 	while(it.hasNext()) {
+		 		System.out.println("Playlists Disponíveis: " + it.next().toString());	 
+		 	}
+	 	}
 	}
 }
