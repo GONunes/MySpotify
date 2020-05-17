@@ -1,6 +1,9 @@
 package application.model.repositories;
 
 import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.util.ArrayList;
+import java.util.List;
 
 import application.config.DatabaseConfig;
 import application.config.UserConfig;
@@ -39,6 +42,34 @@ public class PlaylistRepository {
 			System.out.println(e.getMessage());
 		}
 		
+	}
+	
+	public static List<Playlist> getAllPlaylists() {
+		List<Playlist> playlists = new ArrayList<>();
+		String sql = "SELECT * FROM playlists WHERE createdBy = ?";
+		
+		try(PreparedStatement ps = DatabaseConfig.getConnect().prepareStatement(sql)) {
+			
+			ps.setInt(1, UserConfig.getUser().getId());
+			
+			ResultSet rs = ps.executeQuery();
+			if(rs.next()) {
+				playlists.add(new Playlist(
+								rs.getInt("id"),
+								rs.getString("nome"),
+								null
+						));
+			}
+			
+			
+		} catch (Exception e) {
+			System.out.println(e.getMessage());
+		}
+		
+		if(playlists.size() > 0)
+			return playlists;
+		else
+			return null;
 	}
 	
 }
