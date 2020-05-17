@@ -7,6 +7,7 @@ import java.util.List;
 
 import application.config.DatabaseConfig;
 import application.config.UserConfig;
+import application.model.entities.Composer;
 import application.model.entities.Playlist;
 import application.model.entities.Song;
 
@@ -47,18 +48,41 @@ public class PlaylistRepository {
 	
 	public static List<Playlist> getAllPlaylists() {
 		List<Playlist> playlists = new ArrayList<>();
+		List<Song> songs = new ArrayList<>();
+		int idPlaylist = 0;
+		
 		String sql = "SELECT * FROM playlists WHERE createdBy = ?";
+		String sqlSongs = "SELECT t2.*, t3.nome FROM playlists_songs AS t1 JOIN songs AS t2 ON t1.song_id = t2.id JOIN composers AS t3 ON t2.compositor = t3.id WHERE playlist_id = ?;;";
 		
 		try(PreparedStatement ps = DatabaseConfig.getConnect().prepareStatement(sql)) {
 			
 			ps.setInt(1, UserConfig.getUser().getId());
 			
 			ResultSet rs = ps.executeQuery();
-			if(rs.next()) {
+			while(rs.next()) {
+				idPlaylist = rs.getInt("id");
+				
+				PreparedStatement pss = DatabaseConfig.getConnect().prepareStatement(sqlSongs);
+				pss.setInt(1, idPlaylist);
+				
+				ResultSet rss = pss.executeQuery();
+				songs = new ArrayList<>();
+				
+				while(rss.next()) {
+					songs.add(new Song(
+								rss.getInt("id"),
+								rss.getString("titulo"),
+								rss.getInt("ano"),
+								rss.getString("genero"),
+								rss.getDouble("duracao"),
+								new Composer(rss.getString("nome"))
+							));
+				}
+				
 				playlists.add(new Playlist(
-								rs.getInt("id"),
+								idPlaylist,
 								rs.getString("nome"),
-								null
+								songs
 						));
 			}
 			
