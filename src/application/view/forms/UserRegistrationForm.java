@@ -39,7 +39,7 @@ public class UserRegistrationForm {
 		}
 		else {
  			System.out.println("Esse usuário já está cadastrado!");
- 			System.out.println("Precione enter para continuar...");
+ 			System.out.println("Pressione enter para continuar...");
  			
  			sc.nextLine();
 			sc.nextLine();
