@@ -17,8 +17,8 @@ public class PlaylistRegistrationForm {
 		Playlist playlist = new Playlist();
 		List<Song> songs = SongRepository.getAllSongs();		
 		String ids = "";
-		
 		Scanner sc = new Scanner(System.in);
+		
 		Screen.clear();
 		
 		if(songs == null) {
@@ -73,6 +73,9 @@ public class PlaylistRegistrationForm {
 			
 			HomeUserScreen.view();
 		}
+		
+		System.out.println("Pressione Enter para Continuar.");
+		sc.nextLine();
 		
 	}
 }
