@@ -30,7 +30,7 @@ public class SongRegistrationForm {
 		
 		System.out.println(" Digite o genêro da musica: ");
 		System.out.print(" > ");
-		String genre = sc.next();
+		String genre = sc.nextLine();
 		System.out.print("\n");
 		song.setGenero(genre);
 		
@@ -42,7 +42,7 @@ public class SongRegistrationForm {
 		
 		System.out.println(" Digite o nome do compositor: ");
 		System.out.print(" > ");
-		String songwriter = sc.next();
+		String songwriter = sc.nextLine();
 		song.setCompositor(new Composer());
 		System.out.print("\n");
 		song.getCompositor().setName(songwriter);

@@ -1,12 +1,16 @@
 package application.view.screen;
 
-import java.util.*;
+import java.util.List;
+import java.util.ListIterator;
+import java.util.Scanner;
 
 import application.model.entities.Song;
 import application.model.repositories.SongRepository;
+import application.util.Screen;
 
 public class SongsScreen {
 	public static void view() {	
+		Screen.clear();
 		Scanner sc = new Scanner(System.in);
 	
 		List<Song> songs = SongRepository.getAllSongs();
@@ -18,14 +22,17 @@ public class SongsScreen {
 			sc.nextLine();
 			sc.nextLine();
 		}
-		ListIterator it = songs.listIterator();
+		
+		ListIterator<Song> it = songs.listIterator();
+		System.out.println("Músicas Cadastradas: ");
+		
 		while(it.hasNext()) {
-			System.out.println("Músicas Cadastradas: " + it.next());
+			System.out.println(it.next());
+			System.out.println();
 		}
 		
-			System.out.println("Pressione Enter para Continuar.");
-			sc.nextLine();
-			sc.nextLine();
+		System.out.println("Pressione Enter para Continuar.");
+		sc.nextLine();
 			
 	}
 }
