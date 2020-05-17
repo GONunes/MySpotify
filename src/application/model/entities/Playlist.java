@@ -1,10 +1,7 @@
 package application.model.entities;
 
-import java.util.ArrayList;
-import java.util.Iterator;
-import java.util.List;
+import java.util.*;
 
-import Questao_12.Veiculo;
 
 public class Playlist {
 	
@@ -38,6 +35,14 @@ public class Playlist {
 	}
 	public void setSongs(List<Song> songs) {
 		this.songs = songs;
+	}
+	
+	
+	
+	public String toString() {
+		return "Detalhes da Playlist: " + "\n" +
+						"Nome: " + nome + "\n" +
+						 "Músicas na Lista: " + songs;
 	}
 		
 }
