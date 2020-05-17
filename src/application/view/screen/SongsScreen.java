@@ -28,7 +28,7 @@ public class SongsScreen {
 		
 		while(it.hasNext()) {
 			for(int i  = 0; i < songs.size(); i++) {
-			System.out.println(it.next());
+			System.out.println(it.next().toString());
 			System.out.println();
 			}
 		}
