@@ -25,6 +25,11 @@ public class Song {
 		this(titulo, ano, genero, duracao, compositor);
 		this.id = id;
 	}
+	
+	public Song(int id, String titulo, int ano, String genero, double duracao, Composer compositor, Album album) {
+		this(id, titulo, ano, genero, duracao, compositor);
+		this.album = album;
+	}
 
 	public int getId() {
 		return id;

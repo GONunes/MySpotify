@@ -37,6 +37,7 @@ public class Playlist {
 		this.songs = songs;
 	}
 
+	@Override
 	public String toString() {
 		return "Detalhes da Playlist: " + "\n" +
 						"Nome: " + nome + "\n" +

@@ -7,23 +7,28 @@ import java.util.List;
 
 import application.config.DatabaseConfig;
 import application.config.UserConfig;
+import application.model.entities.Album;
 import application.model.entities.Composer;
 import application.model.entities.Song;
 
 public class SongRepository {
 	
 	public static void add(Song song) {
-		String sqlSong = "INSERT INTO songs (createdBy, titulo, ano, genero, duracao, compositor) VALUES (?,?,?,?,?,?)";
-		String sqlComposer = "INSERT INTO composers (nome) VALUES (?)";
-		String sqlComposerSeach = "SELECT * FROM composers WHERE nome = ?";
-		
+		String sqlSong 			 = "INSERT INTO songs (createdBy, titulo, ano, genero, duracao, compositor, album) VALUES (?,?,?,?,?,?,?)";
+		String sqlComposer 		 = "INSERT INTO composers (nome) VALUES (?)";
+		String sqlAlbum 		 = "INSERT INTO albums (titulo, compositor) VALUES (?,?)";
+		String sqlComposerSearch = "SELECT * FROM composers WHERE nome = ?";
+		String sqlAlbumSearch 	 = "SELECT * FROM albums WHERE titulo = ?";
+
 		int idComposer = 0;
+		int idAlbum = 0;
 		
 		try {
 			PreparedStatement pscS = DatabaseConfig.getConnect()
-												.prepareStatement(sqlComposerSeach);
+												.prepareStatement(sqlComposerSearch);
 			pscS.setString(1, song.getCompositor().getName());
 			
+			// Buscar se já existe aquele compositor cadastrado para vincular a essa música.
 			ResultSet rscs = pscS.executeQuery();
 			if(!rscs.next()) {	
 				PreparedStatement pst = DatabaseConfig.getConnect()
@@ -39,7 +44,32 @@ public class SongRepository {
 			} else {
 				idComposer = rscs.getInt("id");
 			}
+			
+			// Caso a música tenha um álbum, verificar se ele também já está cadastrado para vincular.
+			if(song.getAlbum() != null) {
+				PreparedStatement psAS = DatabaseConfig.getConnect()
+													.prepareStatement(sqlAlbumSearch);
+				psAS.setString(1, song.getAlbum().getTitulo());
 				
+				ResultSet rsAS = psAS.executeQuery();
+				
+				if(rsAS.next()) {
+					idAlbum = rsAS.getInt("id");
+				} else {
+					PreparedStatement psA = DatabaseConfig.getConnect()
+														.prepareStatement(sqlAlbum);
+					psA.setString(1, song.getAlbum().getTitulo());
+					psA.setInt(2, idComposer);
+					
+					psA.executeUpdate();
+					idAlbum = DatabaseConfig.getConnect()
+										.createStatement()
+										.getGeneratedKeys()
+										.getInt("last_insert_rowid()");
+				}
+			}
+			
+			// Cadastrar a música.
 			PreparedStatement pstS = DatabaseConfig.getConnect()
 												.prepareStatement(sqlSong);
 			pstS.setInt(1, UserConfig.getUser().getId());
@@ -48,6 +78,7 @@ public class SongRepository {
 			pstS.setString(4, song.getGenero());
 			pstS.setDouble(5, song.getDuracao());
 			pstS.setInt(6, idComposer);
+			pstS.setInt(7, idAlbum);
 			
 			pstS.executeUpdate();
 			
@@ -57,7 +88,7 @@ public class SongRepository {
 	}
 	
 	public static List<Song> getAllSongs() {
-		String sql = "SELECT t1.*, t2.nome FROM songs AS t1 JOIN composers AS t2 ON t1.compositor = t2.id WHERE createdBy = ?";
+		String sql = "SELECT t1.*, t2.nome, t3.titulo FROM songs AS t1 JOIN composers AS t2 ON t1.compositor = t2.id JOIN albums AS t3 ON t1.album = t3.id WHERE createdBy = ?";
 		List<Song> songs = new ArrayList<>();
 		
 		try {
@@ -67,13 +98,15 @@ public class SongRepository {
 			ResultSet rs = st.executeQuery();
 			
 			while(rs.next()) {
+				Composer composer = new Composer(rs.getString("nome"));
 				songs.add(new Song(
 							rs.getInt("id"),
 							rs.getString("titulo"),
 							rs.getInt("ano"),
 							rs.getString("genero"),
 							rs.getDouble("duracao"),
-							new Composer(rs.getString("nome"))
+							composer,
+							new Album(rs.getString("titulo"), composer)
 						));
 			}
 			

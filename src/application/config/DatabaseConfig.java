@@ -24,12 +24,13 @@ public class DatabaseConfig {
 	public static void started() {
 		connect();
 		
-		String[] initialSqls = new String[5];
+		String[] initialSqls = new String[6];
 		initialSqls[0] = "CREATE TABLE IF NOT EXISTS users (id INTEGER PRIMARY KEY AUTOINCREMENT, name VARCHAR(50), created DATETIME); ";
-		initialSqls[1] = "CREATE TABLE IF NOT EXISTS songs (id INTEGER PRIMARY KEY AUTOINCREMENT, createdBy integer, titulo VARCHAR(250), ano integer, genero VARCHAR(50), duracao DOUBLE, compositor INTEGER);"; 
+		initialSqls[1] = "CREATE TABLE IF NOT EXISTS songs (id INTEGER PRIMARY KEY AUTOINCREMENT, createdBy integer, titulo VARCHAR(250), ano integer, genero VARCHAR(50), duracao DOUBLE, compositor INTEGER, album INTEGER);"; 
 		initialSqls[2] = "CREATE TABLE IF NOT EXISTS composers (id INTEGER PRIMARY KEY AUTOINCREMENT, nome VARCHAR(250));"; 
 		initialSqls[3] = "CREATE TABLE IF NOT EXISTS playlists (id INTEGER PRIMARY KEY AUTOINCREMENT, createdBy integer, nome VARCHAR(250));";
 		initialSqls[4] = "CREATE TABLE IF NOT EXISTS playlists_songs (id INTEGER PRIMARY KEY AUTOINCREMENT, playlist_id INTEGER, song_id INTEGER);";
+		initialSqls[5] = "CREATE TABLE IF NOT EXISTS albums (id INTEGER PRIMARY KEY AUTOINCREMENT, titulo VARCHAR(200), compositor INTEGER);";
 		
 		try {
 			for(String sql : initialSqls) {
