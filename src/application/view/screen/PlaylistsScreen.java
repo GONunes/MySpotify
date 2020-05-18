@@ -23,7 +23,7 @@ public class PlaylistsScreen {
 		 System.out.println("Playlists Disponíveis: ");
 		 while(it.hasNext()) {
 				 for(int i = 0; i< playlists.size(); i++) {
-					 System.out.println(it.next());
+					 System.out.println(it.next().toString());
 				 }
 			 } 
 		 }
