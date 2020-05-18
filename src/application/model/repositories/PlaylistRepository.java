@@ -96,5 +96,37 @@ public class PlaylistRepository {
 		else
 			return null;
 	}
+
+	public static void removeById(int id) {
+		String sqlPlaylistUser 	= "SELECT * FROM playlists WHERE createdBy = ? AND id = ?";
+		String sqlPrincipal 	= "DELETE FROM playlists WHERE id = ?";
+		String sqlSongs 		= "DELETE FROM playlists_songs WHERE playlist_id = ?";
+		
+		try {
+			PreparedStatement psU = DatabaseConfig.getConnect()
+												.prepareStatement(sqlPlaylistUser);
+			
+			psU.setInt(1, UserConfig.getUser().getId());
+			psU.setInt(2, id);
+			
+			ResultSet rs = psU.executeQuery();
+			
+			if(rs.next()) {
+				PreparedStatement psP = DatabaseConfig.getConnect()
+													.prepareStatement(sqlPrincipal);
+				psP.setInt(1, id);
+				psP.executeUpdate();
+				
+				PreparedStatement psS = DatabaseConfig.getConnect()
+													.prepareStatement(sqlSongs);
+				psS.setInt(1, id);
+				psS.executeQuery();
+			}
+
+		} catch (Exception e) {
+			System.out.println(e.getMessage());
+		}
+		
+	}
 	
 }
