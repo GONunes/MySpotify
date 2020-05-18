@@ -9,6 +9,7 @@ public class Song {
 	private String genero;
 	private double duracao;
 	private Composer compositor;
+	private Album album;
 	
 	public Song() {}
 	
@@ -68,14 +69,24 @@ public class Song {
 	public void setCompositor(Composer compositor) {
 		this.compositor = compositor;
 	}
+	
+	public Album getAlbum() {
+		return album;
+	}
 
+	public void setAlbum(Album album) {
+		this.album = album;
+	}
+
+	@Override
 	public String toString() {
 		return "Código da Música: " + id + "\n" +
 				"Título da Música: " + titulo + "\n" +
-							"Ano: " + ano + "\n" +
-							"Gênero: " + genero + "\n" +
-							"Duração: " + duracao + "\n" +
-							"Compositor: " + compositor.getName();
+				(album == null ? "" : "Album: " + album.getTitulo() + "\n") +
+				"Ano: " + ano + "\n" +
+				"Gênero: " + genero + "\n" +
+				"Duração: " + duracao + "\n" +
+				"Compositor: " + compositor.getName();
 	}
 	
 }
