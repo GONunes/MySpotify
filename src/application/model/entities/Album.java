@@ -2,11 +2,13 @@ package application.model.entities;
 
 public class Album {
 	
-	Composer compositor;
+	private String titulo;
+	private Composer compositor;
 	
 	public Album() {}
 	
-	public Album(Composer compositor) {
+	public Album(String titulo, Composer compositor) {
+		this.titulo = titulo;
 		this.compositor = compositor;
 	}
 
@@ -18,5 +20,12 @@ public class Album {
 		this.compositor = compositor;
 	}
 
-	
+	public String getTitulo() {
+		return titulo;
+	}
+
+	public void setTitulo(String titulo) {
+		this.titulo = titulo;
+	}
+
 }
