@@ -5,7 +5,7 @@ import java.util.*;
 import application.model.entities.Playlist;
 import application.model.repositories.PlaylistRepository;
 
-public class PlaylistScreen {
+public class PlaylistsScreen {
 	public static void view() {
 	Scanner sc = new Scanner(System.in);
 	
