@@ -88,7 +88,7 @@ public class SongRepository {
 	}
 	
 	public static List<Song> getAllSongs() {
-		String sql = "SELECT t1.*, t2.nome, t3.titulo FROM songs AS t1 JOIN composers AS t2 ON t1.compositor = t2.id JOIN albums AS t3 ON t1.album = t3.id WHERE createdBy = ?";
+		String sql = "SELECT t1.*, t2.nome, t3.titulo AS albumTitulo FROM songs AS t1 JOIN composers AS t2 ON t1.compositor = t2.id LEFT JOIN albums AS t3 ON t1.album = t3.id WHERE createdBy = ?";
 		List<Song> songs = new ArrayList<>();
 		
 		try {
@@ -106,7 +106,7 @@ public class SongRepository {
 							rs.getString("genero"),
 							rs.getDouble("duracao"),
 							composer,
-							new Album(rs.getString("titulo"), composer)
+							new Album(rs.getString("albumTitulo"), composer)
 						));
 			}
 			

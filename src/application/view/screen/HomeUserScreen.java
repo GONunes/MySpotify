@@ -3,6 +3,7 @@ package application.view.screen;
 import java.util.Scanner;
 
 import application.config.UserConfig;
+import application.model.repositories.SongRepository;
 import application.util.Screen;
 import application.view.forms.PlaylistRegistrationForm;
 import application.view.forms.PlaylistRemoveForm;
