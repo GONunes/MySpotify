@@ -33,27 +33,28 @@ public class HomeUserScreen {
 			escolha = sc.nextInt();
 			
 			switch (escolha) {
-			case 1:
-				SongRegistrationForm.view();
-				break;
-			case 2:
-				PlaylistRegistrationForm.view();
-				break;
-			case 3:
-				SongRemoveForm.view();
-				break;
-			case 4:
-				PlaylistRemoveForm.view();
-				break;
-			case 5:
-				SongsScreen.view();
-				break;
-			case 6:
-				PlaylistScreen.view();
-				break;
-			case 7:
-				System.out.println("Saindo");
-				open = false;
-		}}
-}
+				case 1:
+					SongRegistrationForm.view();
+					break;
+				case 2:
+					PlaylistRegistrationForm.view();
+					break;
+				case 3:
+					SongRemoveForm.view();
+					break;
+				case 4:
+					PlaylistRemoveForm.view();
+					break;
+				case 5:
+					SongsScreen.view();
+					break;
+				case 6:
+					PlaylistScreen.view();
+					break;
+				case 7:
+					System.out.println("Saindo");
+					open = false;
+			}
+		}
+	}
 }
