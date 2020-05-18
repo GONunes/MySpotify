@@ -21,11 +21,16 @@ public class PlaylistsScreen {
 		 
 		 ListIterator<Playlist> it = playlists.listIterator();
 		 System.out.println("Playlists Disponíveis: ");
+		 
 		 while(it.hasNext()) {
-				 for(int i = 0; i< playlists.size(); i++) {
-					 System.out.println(it.next());
+			for(int i = 0; i < playlists.size(); i++) {
+				System.out.println(it.next().toString());
+				System.out.println();
 				 }
-			 } 
+			 }
+		 	
+		 	System.out.println("Pressione Enter para Continuar.");
+			sc.nextLine();
 		 }
 	}
 }

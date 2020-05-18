@@ -3,21 +3,21 @@ package application.model.entities;
 public class Album {
 	
 	private String titulo;
-	private Composer compositor;
+	private Composer compositores;
 	
 	public Album() {}
 	
 	public Album(String titulo, Composer compositor) {
 		this.titulo = titulo;
-		this.compositor = compositor;
+		this.compositores = compositor;
 	}
 
 	public Composer getCompositor() {
-		return compositor;
+		return compositores;
 	}
 
 	public void setCompositor(Composer compositor) {
-		this.compositor = compositor;
+		this.compositores = compositor;
 	}
 
 	public String getTitulo() {

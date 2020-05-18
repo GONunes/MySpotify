@@ -27,9 +27,9 @@ public class SongsScreen {
 		System.out.println("Músicas Cadastradas: ");
 		
 		while(it.hasNext()) {
-			for(int i  = 0; i < songs.size(); i++) {
-			System.out.println(it.next().toString());
-			System.out.println();
+			for(int i = 0; i < songs.size(); i++) {
+				System.out.println(it.next().toString());
+				System.out.println();
 			}
 		}
 		

@@ -49,7 +49,7 @@ public class PlaylistRemoveForm {
 										.get();
 				
 				if(playlistSelected != null)
-					/*PlaylistRepository.remove(playlistSelected)*/;
+					PlaylistRepository.removeById(idInt);
 				else 
 					System.out.println("O ID '"
 									+ idInt 
