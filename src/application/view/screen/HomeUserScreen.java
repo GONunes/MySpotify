@@ -49,7 +49,7 @@ public class HomeUserScreen {
 					SongsScreen.view();
 					break;
 				case 6:
-					PlaylistScreen.view();
+					PlaylistsScreen.view();
 					break;
 				case 7:
 					System.out.println("Saindo");
