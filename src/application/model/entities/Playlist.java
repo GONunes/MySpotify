@@ -1,7 +1,7 @@
 package application.model.entities;
 
-
-import java.util.*;
+import java.util.ArrayList;
+import java.util.List;
 
 public class Playlist {
 	
@@ -39,9 +39,18 @@ public class Playlist {
 
 	@Override
 	public String toString() {
-		return "Detalhes da Playlist: " + "\n" +
-						"Nome: " + nome + "\n" +
-						 "Músicas na Lista: " + songs;
+		String playlist = "Detalhes da Playlist: " + "\n" +
+						  "Nome: " + nome + "\n" +
+						  "Músicas na Lista: " + "\n";
+		
+		for(Song song : songs) {
+			playlist += " - " + song.getId() + ". " + song.getTitulo() + " - " 
+					+ song.getAlbum().getTitulo() 
+					+ "\n";
+		}
+		
+		return playlist;
+				
 	}
 
 }
