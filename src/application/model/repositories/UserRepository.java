@@ -24,6 +24,15 @@ public class UserRepository {
 			pst.setDate(2, new Date(user.getCreated().getTime()) );
 			
 			pst.executeUpdate();
+			
+			user.setId(
+						DatabaseConfig
+							.getConnect()
+							.createStatement()
+							.getGeneratedKeys()
+							.getInt("last_insert_rowid()")
+					);
+			
 		} catch (Exception e) {
 			System.out.println(e.getMessage());
 		}
