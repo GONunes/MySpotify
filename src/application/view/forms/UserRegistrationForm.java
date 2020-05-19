@@ -35,6 +35,7 @@ public class UserRegistrationForm {
 			sc.nextLine();
 			sc.nextLine();
 			
+			UserConfig.setUser(user);
 			HomeUserScreen.view();
 		}
 		else {
