@@ -21,7 +21,6 @@ public class PlaylistsScreen {
 				System.out.println("Volte à tela principal para montar a sua playlist.");
 				System.out.println("Pressione Enter para retornar ao menu principal.");
 				sc.nextLine();
-				sc.nextLine();
 		 } else {
 			 ListIterator<Playlist> it = playlists.listIterator();
 			 System.out.println("Playlists Disponíveis: ");

@@ -2,6 +2,7 @@ package application.view.forms;
 
 import java.util.List;
 import java.util.Scanner;
+import java.util.stream.Collectors;
 
 import application.model.entities.Playlist;
 import application.model.entities.Song;
@@ -49,17 +50,23 @@ public class PlaylistRegistrationForm {
 			String[] idsArray = ids.split(",");
 			for(String id : idsArray) {
 				int idInt = Integer.parseInt(id.trim());
-				Song songSelected = songs.stream()
-										.filter(s -> s.getId() == idInt)
-										.findFirst()
-										.get();
+				List<Song> songsFilter = songs.stream()
+											.filter(s -> s.getId() == idInt)
+											.collect(Collectors.toList());
 				
-				if(songSelected != null)
-					playlist.getSongs().add(songSelected);
-				else 
-					System.out.println("O ID '"
+				boolean err = true;
+				if(songsFilter != null)
+					if(songsFilter.size() > 0) {
+						playlist.getSongs().add(songsFilter.get(0));
+						err = false;
+					}
+				
+				if(err) {
+					System.out.println("ATENÇÃO: O código '"
 									+ idInt 
-									+ "' informado não é uma música válida");
+									+ "' informado não é de uma música válida");
+					System.out.println("Por isso não foi cadastrado na playlist");
+				}
 				
 			}
 			

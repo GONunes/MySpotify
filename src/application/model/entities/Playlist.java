@@ -43,12 +43,7 @@ public class Playlist {
 						  "Músicas na Lista: " 		+ System.lineSeparator();
 		
 		for(Song song : songs) {
-			playlist += " - " + song.getId() + ". " + song.getTitulo();
-			Album album = song.getAlbum();
-			
-			if (album != null)
-				if(album.getTitulo() != null)
-					playlist += " - " + album.getTitulo();
+			playlist += " - " + song.getId() + ". " + song.getTitulo() + " - " + song.getCompositor().getName();
 			playlist += System.lineSeparator();
 		}
 		

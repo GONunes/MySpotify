@@ -120,7 +120,7 @@ public class PlaylistRepository {
 				PreparedStatement psS = DatabaseConfig.getConnect()
 													.prepareStatement(sqlSongs);
 				psS.setInt(1, id);
-				psS.executeQuery();
+				psS.executeUpdate();
 			}
 
 		} catch (Exception e) {

@@ -2,22 +2,25 @@ package application.view.forms;
 
 import java.util.List;
 import java.util.Scanner;
+import java.util.stream.Collectors;
 
 import application.model.entities.Playlist;
 import application.model.entities.Song;
 import application.model.repositories.PlaylistRepository;
-import application.model.repositories.SongRepository;
-import application.view.screen.HomeUserScreen;
+import application.util.Screen;
 
 public class PlaylistRemoveForm {
 	public static void view() {
+		
+		Screen.clear();
 		Scanner sc = new Scanner(System.in);
 		List<Playlist> playlists = PlaylistRepository.getAllPlaylists();
+		
 		String ids = "";
 		int confirm;
 		
-		
 		System.out.println("Verifique na lista qual playlist remover:");
+		System.out.println();
 		
 		for(Playlist playlist : playlists) {
 			System.out.print(playlist.getId() + ". " + playlist.getNome() + "\n");
@@ -31,7 +34,8 @@ public class PlaylistRemoveForm {
 		System.out.print(">");
 		ids = sc.nextLine();
 		
-		System.out.println("Apos removida, a playlist será perdida permanentemente");
+		System.out.println();
+		System.out.println("Após removida, a playlist será perdida permanentemente");
 		System.out.println("Continuar?");
 		System.out.println("1. Sim");
 		System.out.println("2. Não");
@@ -43,24 +47,29 @@ public class PlaylistRemoveForm {
 			String[] idsArray = ids.split(",");
 			for(String id : idsArray) {
 				int idInt = Integer.parseInt(id.trim());
-				Playlist playlistSelected = playlists.stream()
-										.filter(s -> s.getId() == idInt)
-										.findFirst()
-										.get();
+				List<Playlist> playlistsFilter = playlists.stream()
+											.filter(s -> s.getId() == idInt)
+											.collect(Collectors.toList());
 				
-				if(playlistSelected != null)
-					PlaylistRepository.removeById(idInt);
-				else 
-					System.out.println("O ID '"
+				boolean err = true;
+				if(playlistsFilter != null)
+					if(playlistsFilter.size() > 0) {
+						PlaylistRepository.removeById(playlistsFilter.get(0).getId());
+						err = false;
+					}
+				
+				if(err) {
+					System.out.println("ATENÇÃO: O código '"
 									+ idInt 
-									+ "' informado não é uma playlist válida");
-			
-		}
+									+ "' informado não é de uma playlist válida");
+				}
+			}
 			
 			System.out.println();
-			System.out.println("Playlist excluída com sucesso!");
+			System.out.println("Playlists excluídas com sucesso!");
 			System.out.println("Pressione enter para continuar...");
 			
+			sc.nextLine();
 			sc.nextLine();
 			
 	}
