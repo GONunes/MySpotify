@@ -39,14 +39,17 @@ public class Playlist {
 
 	@Override
 	public String toString() {
-		String playlist = "Detalhes da Playlist: " + "\n" +
-						  "Nome: " + nome + "\n" +
-						  "Músicas na Lista: " + "\n";
+		String playlist = "Nome: " + nome 			+ System.lineSeparator() +
+						  "Músicas na Lista: " 		+ System.lineSeparator();
 		
 		for(Song song : songs) {
-			playlist += " - " + song.getId() + ". " + song.getTitulo() + " - " 
-					+ song.getAlbum().getTitulo() 
-					+ "\n";
+			playlist += " - " + song.getId() + ". " + song.getTitulo();
+			Album album = song.getAlbum();
+			
+			if (album != null)
+				if(album.getTitulo() != null)
+					playlist += " - " + album.getTitulo();
+			playlist += System.lineSeparator();
 		}
 		
 		return playlist;

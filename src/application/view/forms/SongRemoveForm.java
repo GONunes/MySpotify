@@ -30,9 +30,9 @@ public class SongRemoveForm {
 			}
 			
 			System.out.println();
-			System.out.println("ATENÇÃO: a musica removida também será removida de qualquer playlist que estiver");
-			System.out.println("Continuar com remoção de musica?");
+			System.out.println("ATENÇÃO: a musica removida também será sairá de qualquer playlist que estiver");
 			System.out.println();
+			System.out.println("Deseja continuar com a remoção de musica?");
 			System.out.println("1. Sim");
 			System.out.println("2. Não");
 			System.out.print("> ");

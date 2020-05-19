@@ -86,14 +86,16 @@ public class Song {
 	@Override
 	public String toString() {
 		if(this.album == null) this.album = new Album(); // Para evitar um NullPointerException
-		Double duracao = this.duracao;
 		
 		return "Código da Música: " + id + "\n" +
 				"Título da Música: " + titulo + "\n" +
 				(album.getTitulo() == null ? "" : "Album: " + album.getTitulo() + "\n") +
 				"Ano: " + ano + "\n" +
 				"Gênero: " + genero + "\n" +
-				"Duração: " + (duracao.toString()).replace(".", ":") + "\n" +
+				"Duração: " + String.format("%.2f", duracao)
+								.replace(".", ":")
+								.replace(",", ":") 
+							+ "\n" +
 				"Compositor: " + compositor.getName();
 	}
 	

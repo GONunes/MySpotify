@@ -17,24 +17,25 @@ public class SongsScreen {
 		
 		if(songs == null) {
 			System.out.println("A lista de músicas está vazia!");	
+			System.out.println();
 			System.out.println("Volte à tela principal para fazer o cadastro das músicas.");
 			System.out.println("Pressione Enter para retornar ao menu principal.");
 			
 			sc.nextLine();			
 		}else {
-		
-		ListIterator<Song> it = songs.listIterator();
-		System.out.println("Músicas Cadastradas: ");
-		
-		while(it.hasNext()) {
-			for(int i = 0; i < songs.size(); i++) {
-				System.out.println(it.next().toString());
-				System.out.println();
+			ListIterator<Song> it = songs.listIterator();
+			System.out.println("Músicas Cadastradas: ");
+			System.out.println();
+			
+			while(it.hasNext()) {
+				for(int i = 0; i < songs.size(); i++) {
+					System.out.println(it.next());
+					System.out.println();
+				}
 			}
-		}
-		
-		System.out.println("Pressione Enter para Continuar.");
-		sc.nextLine();		
+			
+			System.out.println("Pressione Enter para Continuar.");
+			sc.nextLine();		
 		}
 	}
 }
