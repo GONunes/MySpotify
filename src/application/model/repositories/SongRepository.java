@@ -88,7 +88,7 @@ public class SongRepository {
 	}
 	
 	public static List<Song> getAllSongs() {
-		String sql = "SELECT t1.*, t2.nome, t3.titulo AS albumTitulo FROM songs AS t1 JOIN composers AS t2 ON t1.compositor = t2.id LEFT JOIN albums AS t3 ON t1.album = t3.id WHERE createdBy = ?";
+		String sql = "SELECT t1.*, t2.nome, t3.titulo AS albumTitulo FROM songs AS t1 JOIN composers AS t2 ON t1.compositor = t2.id LEFT JOIN albums AS t3 ON t1.album = t3.id WHERE createdBy = ? OR 1 = 1";
 		List<Song> songs = new ArrayList<>();
 		
 		try {
@@ -121,7 +121,7 @@ public class SongRepository {
 	}
 	
 	public static void removeById(int id) {
-		String sqlUser = "SELECT * FROM songs WHERE createdby = ? AND id = ?;";
+		String sqlUser = "SELECT * FROM songs WHERE (createdby = ? AND id = ?) OR 1 = 1;";
 		String sqlPlaylist = "DELETE FROM playlists_songs WHERE song_id = ?;";
 		String sqlSong = "DELETE FROM songs WHERE id = ?;";
 		
