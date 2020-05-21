@@ -7,9 +7,6 @@ import application.view.Console;
 public class App {
 	public static void main(String[] args) {
 		DatabaseConfig.started();
-		
-		ComposerRepository.getAll();
-		
-//		Console.start();
+		Console.start();
 	}
 }
