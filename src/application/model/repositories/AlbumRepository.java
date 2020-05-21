@@ -12,7 +12,7 @@ import application.model.entities.Song;
 
 public class AlbumRepository {
 
-	public List<Album> getAll () {
+	public static List<Album> getAll () {
 		List<Album> albums = new ArrayList<>();
 		String sqlA = "SELECT t1.id, t1.titulo, t2.nome AS 'compositor' FROM albums AS t1 JOIN composers AS t2 ON t1.compositor = t2.id;";
 		String sqlS = "SELECT * FROM songs WHERE album = ?;";
