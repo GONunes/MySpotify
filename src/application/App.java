@@ -1,7 +1,6 @@
 package application;
 
 import application.config.DatabaseConfig;
-import application.model.repositories.ComposerRepository;
 import application.view.Console;
 
 public class App {

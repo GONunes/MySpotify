@@ -34,6 +34,7 @@ public class ComposerRepository {
 
 				while(rsS.next()) {
 					Song s = new Song();
+					System.out.println(rsS.getString("titulo"));
 					s.setTitulo(rsS.getString("titulo"));
 					s.setGenero(rsS.getString("genero"));
 					songs.add(s);
