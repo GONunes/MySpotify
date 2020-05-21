@@ -33,11 +33,11 @@ public class Composer extends User {
 
 	@Override
 	public String toString() {
-		String compositor = "Nome: " + name 			+ System.lineSeparator() +
+		String compositor = "Nome: " + this.getName() + System.lineSeparator() +
 				  "Músicas do compositor: " 		+ System.lineSeparator();
-		
+
 		for(Song song : musicas) {
-			compositor += " - " + song.getId() + ". " + song.getTitulo() + " - " + song.getCompositor().getName();
+			compositor += " - " + song.getId() + ". " + song.getTitulo();
 			compositor += System.lineSeparator();
 		}
 		

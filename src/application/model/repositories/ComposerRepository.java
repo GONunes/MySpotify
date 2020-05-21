@@ -15,7 +15,7 @@ public class ComposerRepository {
 		
 		List<Composer> composers = new ArrayList<>();
 		
-		String sql = "SELECT * FROM composers";
+		String sql 	= "SELECT * FROM composers";
 		String sqlS = "SELECT * FROM songs WHERE compositor = ?";
 		
 		try {
@@ -24,7 +24,10 @@ public class ComposerRepository {
 			
 			while (rs.next()) {
 				List<Song> songs = new ArrayList<>();
+				
 				Composer composer = new Composer();
+				composer.setName(rs.getString("nome"));
+				
 				int composerId = rs.getInt("id");
 				
 				PreparedStatement ps = DatabaseConfig.getConnect().prepareStatement(sqlS);
@@ -33,13 +36,10 @@ public class ComposerRepository {
 				ResultSet rsS = ps.executeQuery();
 
 				while(rsS.next()) {
-					Song s = new Song();
-					System.out.println(rsS.getString("titulo"));
-					s.setTitulo(rsS.getString("titulo"));
-					s.setGenero(rsS.getString("genero"));
-					songs.add(s);
+					
 				}
 				
+				System.out.println(songs.size());
 				composer.setMusicas(songs);
 				composers.add(composer);
 			}
