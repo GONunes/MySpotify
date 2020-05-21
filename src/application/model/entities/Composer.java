@@ -1,14 +1,13 @@
 package application.model.entities;
 
 import java.util.ArrayList;
-import java.util.Date;
 import java.util.List;
 
 public class Composer extends User {
 	
 	private int id;
-	private ArrayList<Album> albuns = new ArrayList<Album>();
-	private ArrayList<Song> musicas = new ArrayList<Song>();
+	private List<Album> albuns = new ArrayList<Album>();
+	private List<Song> musicas = new ArrayList<Song>();
 	
 	public Composer() {}
 
@@ -19,17 +18,22 @@ public class Composer extends User {
 	public int getId() {
 		return id;
 	}
-	public ArrayList<Album> getAlbuns() {
+	public List<Album> getAlbuns() {
 		return albuns;
 	}
 	public void setAlbuns(ArrayList<Album> albuns) {
 		this.albuns = albuns;
 	}
-	public ArrayList<Song> getMusicas() {
+	public List<Song> getMusicas() {
 		return musicas;
 	}
-	public void setMusicas(ArrayList<Song> musicas) {
-		this.musicas = musicas;
+	public void setMusicas(List<Song> list) {
+		this.musicas = list;
 	}
 
+	@Override
+	public String toString() {
+		return "";
+	}
+	
 }
