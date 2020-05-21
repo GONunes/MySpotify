@@ -33,7 +33,7 @@ public class LoginScreen {
 				UserRegistrationForm.view();
 			else if(username.equals("1")) {
 				open = false;
-			} else {
+			}else {
 				User u = UserAuth.auth(username);
 				
 				if (u != null) {

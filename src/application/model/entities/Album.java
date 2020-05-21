@@ -40,4 +40,17 @@ public class Album {
 		this.songs = songs;
 	}
 	
+	public String toString() {
+		String album = "Nome: " + titulo 			+ System.lineSeparator() +
+						"Compositor: " + getCompositor().getName() + System.lineSeparator() +
+						  "Músicas do Album: " 		+ System.lineSeparator();
+		
+		for(Song song : songs) {
+			album += " - " + song.getId() + ". " + song.getTitulo() + " - " + song.getCompositor().getName();
+			album += System.lineSeparator();
+		}
+		
+		return album;
+	
+}
 }

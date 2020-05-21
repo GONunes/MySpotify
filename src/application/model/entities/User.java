@@ -5,7 +5,7 @@ import java.util.List;
 
 public class User {
 	private int id;
-	private String name;
+	protected String name;
 	private Date created;
 	private List<Playlist> playlists;
 	
