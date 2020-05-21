@@ -1,9 +1,13 @@
 package application.model.entities;
 
+import java.util.ArrayList;
+import java.util.List;
+
 public class Album {
 	
 	private String titulo;
 	private Composer compositores;
+	private List<Song> songs = new ArrayList<>();
 	
 	public Album() {}
 	
@@ -28,4 +32,12 @@ public class Album {
 		this.titulo = titulo;
 	}
 
+	public List<Song> getSongs() {
+		return songs;
+	}
+	
+	public void setSongs(List<Song> songs) {
+		this.songs = songs;
+	}
+	
 }
