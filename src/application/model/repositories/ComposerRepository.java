@@ -1,5 +1,6 @@
 package application.model.repositories;
 
+import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.util.ArrayList;
 import java.util.List;
@@ -13,25 +14,32 @@ public class ComposerRepository {
 	public static List<Composer> getAll() {
 		
 		List<Composer> composers = new ArrayList<>();
-		List<Song> songs = SongRepository.getAllSongs();
 		
 		String sql = "SELECT * FROM composers";
+		String sqlS = "SELECT * FROM songs WHERE compositor = ?";
 		
 		try {
 			
 			ResultSet rs = DatabaseConfig.getConnect().createStatement().executeQuery(sql);
 			
 			while (rs.next()) {
+				List<Song> songs = new ArrayList<>();
 				Composer composer = new Composer();
 				int composerId = rs.getInt("id");
 				
-				composer.setName(rs.getString("nome"));
-				composer.setMusicas(
-							songs.stream()
-								.filter(s -> s.getCompositor().getId() == composerId)
-								.collect(Collectors.toList())
-						);
+				PreparedStatement ps = DatabaseConfig.getConnect().prepareStatement(sqlS);
+				ps.setInt(1, composerId);
 				
+				ResultSet rsS = ps.executeQuery();
+
+				while(rsS.next()) {
+					Song s = new Song();
+					s.setTitulo(rsS.getString("titulo"));
+					s.setGenero(rsS.getString("genero"));
+					songs.add(s);
+				}
+				
+				composer.setMusicas(songs);
 				composers.add(composer);
 			}
 			
