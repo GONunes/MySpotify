@@ -1,16 +1,14 @@
 # VP2 - Projeto
-	O objetivo desse projeto é criar uma aplicação baseada no spotify, em que o
-	usuário cadastrada músicas e pode criar playlists a partir delas, além de poder
-	exibir e excluir tanto as músicas quanto as playlists.
+O objetivo desse projeto Ã© criar uma aplicaÃ§Ã£o baseada no spotify, em que o usuÃ¡rio cadastrada mÃºsicas e pode criar playlists a partir delas, alÃ©m de poder exibir e excluir tanto as mÃºsicas quanto as playlists.
+
+## PersistÃªncia dos Objetos
+Foi utilizado o banco **SQLite** para armazenar os objetos. As interaÃ§Ãµes com ele podem ser vistas nos arquivos do pacote **repositories**.
 	
-## Persistência dos Objetos
-	Foi utilizado o banco SQLite para armazenar os objetos.
-	
-## Executar a Aplicação
-	Para iniciar a aplicação, execute o arquivo compileRun.sh na raiz do projeto.
-		
-		bash compileRun.sh
-		
+## Executar a AplicaÃ§Ã£o
+Para iniciar a aplicaÃ§Ã£o, execute o arquivo compileRun.sh na raiz do projeto.
+
+``bash compileRun.sh``
+
 ## UML das Entidades
 ![uml](./imgs/uml.jpeg)
 	
