@@ -61,9 +61,6 @@ public class HomeUserScreen {
 					ComposersScreen.view();
 					break;
 				case 8:
-					AlbumsScreen.view();
-					break;
-				case 9:
 					System.out.println("Saindo");
 					open = false;
 			}
