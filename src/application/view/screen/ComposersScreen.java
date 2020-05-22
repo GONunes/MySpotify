@@ -22,7 +22,8 @@ public class ComposersScreen {
 				System.out.println("Pressione Enter para retornar ao menu principal.");
 				sc.nextLine();
 		 } else {
-		 ListIterator<Composer> it = compositores.listIterator();
+			ListIterator<Composer> it = compositores.listIterator();
+			
 			System.out.println("Compositores: ");
 			System.out.println();
 			

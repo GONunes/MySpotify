@@ -9,7 +9,7 @@ import application.model.repositories.AlbumRepository;
 import application.util.Screen;
 
 public class AlbumsScreen {
-public static void view() {
+	public static void view() {
 		
 		Screen.clear();
 		Scanner sc = new Scanner(System.in);

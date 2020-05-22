@@ -33,8 +33,9 @@ public class Composer extends User {
 
 	@Override
 	public String toString() {
+
 		String compositor = "Nome: " + name 			+ System.lineSeparator();
-				  
+		
 		return compositor;
 	}
 	
