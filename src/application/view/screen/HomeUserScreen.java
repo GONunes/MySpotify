@@ -31,9 +31,8 @@ public class HomeUserScreen {
 			System.out.println("Digite 5 para listar musicas");
 			System.out.println("Digite 6 para listar playlist");
 			System.out.println("Digite 7 para listar todos os compositores");
-			System.out.println("Digite 8 para listar todos os álbums");
 			System.out.println();
-			System.out.println("Digite 9 para sair");
+			System.out.println("Digite 8 para sair");
 			
 			System.out.print("> ");
 			escolha = sc.nextInt();
