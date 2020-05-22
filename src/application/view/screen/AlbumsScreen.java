@@ -23,6 +23,7 @@ public static void view() {
 				sc.nextLine();
 		 } else {
 			 ListIterator<Album> it = albuns.listIterator();
+			 
 			 System.out.println("Albuns: ");
 			 System.out.println();
 			 
